@@ -5,23 +5,24 @@
  value "popup.html".
  -->
 <html>
-  <head>
+
+<head>
     <title>Getting Started Extension's Popup</title>
     <style type="text/css">
-      body {
-        margin: 10px;
-        white-space: nowrap;
-      }
+        body {
+            margin: 10px;
+            white-space: nowrap;
+        }
 
-      h1 {
-        font-size: 15px;
-      }
+        h1 {
+            font-size: 15px;
+        }
 
-      #container {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-      }
+        #container {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
 
     <!--
@@ -31,13 +32,13 @@
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
     -->
     <script src="popup.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <h1>Background Color Changer</h1>
     <div id="container">
-      <span>Choose a color</span>
-      <select id="dropdown">
+        <span>Choose a color</span>
+        <select id="dropdown">
         <option selected disabled hidden value=''></option>
         <option value="white">White</option>
         <option value="pink">Pink</option>
@@ -45,5 +46,6 @@
         <option value="yellow">Yellow</option>
       </select>
     </div>
-  </body>
+</body>
+
 </html>
