@@ -56,7 +56,7 @@ window.setTimeout(function(){
         initAndAddEventListeners();
     }
 
-    chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-        console.log(response.farewell);
+    chrome.runtime.sendMessage({greeting: "cookiedata"}, function(response) {
+        console.log(response);
     });
 }, 6000);
