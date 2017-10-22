@@ -17,6 +17,6 @@
     },
     "permissions": [
         "cookies",
-        "*://*.replyreminder.com"
+        "*://*.replyreminder.com/*"
     ]
 }
