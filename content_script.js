@@ -55,4 +55,8 @@ window.setTimeout(function(){
 
         initAndAddEventListeners();
     }
+
+    chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
+        console.log(response.farewell);
+    });
 }, 6000);

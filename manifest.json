@@ -15,8 +15,13 @@
     "browser_action": {
         "default_icon": "icon.png"
     },
+    "background": {
+        "scripts": ["background.js"]
+    },
     "permissions": [
         "cookies",
-        "*://*.replyreminder.com/*"
+        "tabs",
+        "*://*.replyreminder.com/*",
+        "*://*.facebook.com/*"
     ]
 }
