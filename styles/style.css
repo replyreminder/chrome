@@ -1,0 +1,12 @@
+.flatpickr-input {
+    cursor: pointer;
+    border: 1px solid #c3c3c3;
+    height: 36px;
+    line-height: 36px;
+    width: 100%;
+    padding: 8px;
+    max-width: 360px;
+    border-radius: 3px;
+    background: #fff;
+    margin: 30px;
+}

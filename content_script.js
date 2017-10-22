@@ -4,14 +4,8 @@ var initAndAddEventListeners = function(){
     $('body').append(
         '<div class="remodal" data-remodal-id="modal"> \
             <button data-remodal-action="close" class="remodal-close"></button> \
-            <h1>Remodal</h1> \
-            <p> \
-                Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking. \
-            </p> \
-            <br> \
-            <input id="datetimepicker"> \
-            <br> \
-            <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button> \
+            <h1>ReplyRepminder</h1> \
+            <input id="datetimepicker" placeholder="When would you like reminded to reply to this message?"> \
             <button data-remodal-action="confirm" class="remodal-confirm">OK</button> \
         </div>'
     );
@@ -29,6 +23,25 @@ var initAndAddEventListeners = function(){
         console.log('click');
         modal.open();
     }, false);
+
+    $(document).on('confirmation', '.remodal', function () {
+        console.log('Confirmation button is clicked', $('#datetimepicker').val());
+        var data = {
+            userid: 'get from cookies',
+            followupUsername: 'get from browser',
+            reminderTime: $('#datetimepicker').val(),
+            notes: ''
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: 'https://replyreminder.herokuapp.com/reminder/',
+            data: data,
+            success: function(e){console.log('success', e)},
+            error: function(e){console.log('error', e)},
+            dataType: 'json'
+        });
+    });
 }
 
 //Delay to let page load - should probably attach this to some kind of element
