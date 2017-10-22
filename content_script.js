@@ -4,7 +4,7 @@ var initAndAddEventListeners = function(){
     $('body').append(
         '<div class="remodal" data-remodal-id="modal"> \
             <button data-remodal-action="close" class="remodal-close"></button> \
-            <h1>ReplyRepminder</h1> \
+            <h1>ReplyReminder</h1> \
             <input id="datetimepicker" placeholder="When would you like reminded to reply to this message?"> \
             <button data-remodal-action="confirm" class="remodal-confirm">OK</button> \
         </div>'
