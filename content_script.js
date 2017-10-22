@@ -12,7 +12,7 @@ var initAndAddEventListeners = function(){
 
     var modal = $('[data-remodal-id=modal]').remodal();
 
-    var datetimepicker = $("#datetimepicker").flatpickr({
+    var datetimepicker = $('#datetimepicker').flatpickr({
         enableTime: true,
         altInput: true,
         minDate: 'today',
@@ -31,18 +31,22 @@ var initAndAddEventListeners = function(){
             followupUsername: 'get from browser',
             reminderTime: +new Date($('#datetimepicker').val()), //A unary operator like plus triggers the valueOf method in the Date object and it returns the timestamp (without any alteration).
             notes: ''
-        }
+        };
 
         $.ajax({
             type: 'POST',
             url: 'https://replyreminder.herokuapp.com/reminder/',
             data: data,
-            success: function(e){console.log('success', e)},
-            error: function(e){console.log('error', e)},
+            success: function(e){
+                console.log('success', e)
+            },
+            error: function(e){
+                console.log('error', e)
+            },
             dataType: 'json'
         });
     });
-}
+};
 
 //Delay to let page load - should probably attach this to some kind of element
 window.setTimeout(function(){
@@ -56,7 +60,7 @@ window.setTimeout(function(){
         initAndAddEventListeners();
     }
 
-    chrome.runtime.sendMessage({greeting: "cookiedata"}, function(response) {
+    chrome.runtime.sendMessage({greeting: 'cookiedata'}, function(response) {
         console.log(response);
     });
 }, 6000);
