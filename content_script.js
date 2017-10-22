@@ -29,7 +29,7 @@ var initAndAddEventListeners = function(){
         var data = {
             userid: 'get from cookies',
             followupUsername: 'get from browser',
-            reminderTime: $('#datetimepicker').val(),
+            reminderTime: +new Date($('#datetimepicker').val()), //A unary operator like plus triggers the valueOf method in the Date object and it returns the timestamp (without any alteration).
             notes: ''
         }
 
