@@ -24,26 +24,30 @@ var initAndAddEventListeners = function(){
         modal.open();
     }, false);
 
-    $(document).on('confirmation', '.remodal', function () {
-        console.log('Confirmation button is clicked', $('#datetimepicker').val());
-        var data = {
-            userid: 'get from cookies',
-            followupUsername: 'get from browser',
-            reminderTime: +new Date($('#datetimepicker').val()), //A unary operator like plus triggers the valueOf method in the Date object and it returns the timestamp (without any alteration).
-            notes: ''
-        };
+    // callback hell, again
+    chrome.runtime.sendMessage({greeting: 'cookiedata'}, function(response) {
+        $(document).on('confirmation', '.remodal', function () {
+            console.log('Confirmation button is clicked', $('#datetimepicker').val());
+            var data = {
+                authtoken: response.authtoken,
+                userid: response.guid,
+                followupUsername: 'get from browser',
+                reminderTime: +new Date($('#datetimepicker').val()), //A unary operator like plus triggers the valueOf method in the Date object and it returns the timestamp (without any alteration).
+                notes: ''
+            };
 
-        $.ajax({
-            type: 'POST',
-            url: 'https://replyreminder.herokuapp.com/reminder/',
-            data: data,
-            success: function(e){
-                console.log('success', e)
-            },
-            error: function(e){
-                console.log('error', e)
-            },
-            dataType: 'json'
+            $.ajax({
+                type: 'POST',
+                url: 'https://replyreminder.herokuapp.com/reminder/',
+                data: data,
+                success: function(e){
+                    console.log('success', e)
+                },
+                error: function(e){
+                    console.log('error', e)
+                },
+                dataType: 'json'
+            });
         });
     });
 };
@@ -59,8 +63,4 @@ window.setTimeout(function(){
 
         initAndAddEventListeners();
     }
-
-    chrome.runtime.sendMessage({greeting: 'cookiedata'}, function(response) {
-        console.log(response);
-    });
 }, 6000);
